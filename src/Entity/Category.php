@@ -35,19 +35,19 @@ class Category
         return $this->id;
     }
 
-    function getName(): string {
+    function getName(){
         return $this->name;
     }
 
-    function getPosts(): Post {
+    function getPosts() {
         return $this->posts;
     }
 
-    function setName(string $name): void {
+    function setName(string $name){
         $this->name = $name;
     }
 
-    function setPosts(Post $posts): void {
+    function setPosts(Post $posts){
         $this->posts = $posts;
     }
 
