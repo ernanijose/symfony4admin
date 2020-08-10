@@ -34,9 +34,9 @@ class Post
     /**
      *
      * @var boolean
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
-    private $status;
+    private $status = true;
     
     /**
      *
@@ -49,35 +49,35 @@ class Post
         return $this->id;
     }
 
-    function getTitle(): string {
+    function getTitle(): ?string {
         return $this->title;
     }
 
-    function getContent(): string {
+    function getContent(): ?string {
         return $this->content;
     }
 
-    function getStatus(): boolean {
+    function getStatus(): ?bool {
         return $this->status;
     }
 
-    function getCategory(): Category {
+    function getCategory(): ?Category {
         return $this->category;
     }
 
-    function setTitle(string $title): void {
+    function setTitle(string $title) {
         $this->title = $title;
     }
 
-    function setContent(string $content): void {
+    function setContent(string $content) {
         $this->content = $content;
     }
 
-    function setStatus(boolean $status): void {
+    function setStatus(bool $status) {
         $this->status = $status;
     }
 
-    function setCategory(Category $category): void {
+    function setCategory(Category $category) {
         $this->category = $category;
     }
 
