@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -41,45 +42,61 @@ class Post
     /**
      *
      * @var Category
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="posts")
+     * @ORM\JoinTable(name="category_post")
      */
     private $category;
     
-    function getId() {
+    /**
+     *
+     * @var Author
+     * 
+     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="posts")
+     */
+    private $author;
+    
+    public function getId() {
         return $this->id;
     }
 
-    function getTitle(): ?string {
+    public function getTitle(): ?string {
         return $this->title;
     }
 
-    function getContent(): ?string {
+    public function getContent(): ?string {
         return $this->content;
     }
 
-    function getStatus(): ?bool {
+    public function getStatus(): ?bool {
         return $this->status;
     }
 
-    function getCategory(): ?Category {
+    public function getCategory(): ?PersistentCollection {
         return $this->category;
     }
 
-    function setTitle(string $title) {
+    public function setTitle(string $title) {
         $this->title = $title;
     }
 
-    function setContent(string $content) {
+    public function setContent(string $content) {
         $this->content = $content;
     }
 
-    function setStatus(bool $status) {
+    public function setStatus(bool $status) {
         $this->status = $status;
     }
 
-    function setCategory(Category $category) {
+    public function setCategory(Category $category) {
         $this->category = $category;
     }
+    
+    public function getAuthor(): ?Author {
+        return $this->author;
+    }
 
+    public function setAuthor(Author $author){
+        $this->author = $author;
+    }
 
 }

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\AuthorRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=AuthorRepository::class)
  */
-class Category
+class Author
 {
     /**
      * @ORM\Id()
@@ -19,7 +19,7 @@ class Category
     
     /**
      *
-     * @var string
+     * @var string 
      * @ORM\Column(type="string")
      */
     private $name;
@@ -27,7 +27,8 @@ class Category
     /**
      *
      * @var Post
-     * @ORM\ManyToMany(targetEntity="App\Entity\Post", mappedBy="category")
+     * 
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="author")
      */
     private $posts;
     
@@ -43,11 +44,15 @@ class Category
         return $this->posts;
     }
 
+    function setId($id): void {
+        $this->id = $id;
+    }
+
     function setName(string $name){
         $this->name = $name;
     }
 
-    function setPosts(Post $posts){
+    function setPosts(Post $posts) {
         $this->posts = $posts;
     }
 
