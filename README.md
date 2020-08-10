@@ -13,3 +13,20 @@ após a instalação dos comandos acima. <br />
 ```
 "sonata-project/core-bundle": "^3.20",
 ```
+
+> Depois tem que instalar
+
+```
+// config/bundles.php
+
+return [
+    // ... 
+    Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle::class => ['all' => true],
+];
+```
+
+Depois executar os seguintes comandos <br />
+
+>  composer require sonata-project/user-bundle
+
+>  composer require friendsofsymfony/user-bundle
